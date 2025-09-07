@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card container col-6 mx-auto mt-5 pd-5 shadow-lg p-3 mb-5 bg-body rounded">
+    <h1>{{item.title}}</h1>
+    <p>{{item.description}}</p>
+    <p>Status: 
+      {% if item.completed %}
+        Completed
+      {% else %}
+        Pending
+      {% endif %}
+    </p>
+    <span>
+    {% if not item.completed %}
+    <button type="button" class="btn btn-success"><a href="{% url 'complite_task' item.id %}" style="color: white;">Complited</a></button>
+    {% else %}
+    <button type="button" class="btn btn-danger"><a href="{% url 'delete_task' item.id %}" style="color: white;">Delete</a></button>
+    {% endif %}
+
+    </span>
+    
+
+</div>
+
+
+{% endblock %}
